@@ -65,68 +65,69 @@
 			<div class="col-md-12">
 				<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 					<div class="form-control" data-trigger="fileinput">
-						<i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-						<span class="input-group-addon btn-file btn btn-primary">
-							<span class="fileinput-new">Pilih Gambar</span>
-							<span class="fileinput-exists">Ubah Gambar</span><input type="file" name="foto" accept="image/*">
-						</span>
-						<a href="#" class="input-group-addon btn btn-danger fileinput-exists" data-dismiss="fileinput">Batal</a>
+						<i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span>
 					</div>
+					<span class="input-group-addon btn-file btn btn-primary">
+						<span class="fileinput-new">Pilih Gambar</span>
+						<span class="fileinput-exists">Ubah Gambar</span><input type="file" name="foto" accept="image/*">
+					</span>
+					<a href="#" class="input-group-addon btn btn-danger fileinput-exists" data-dismiss="fileinput">Batal</a>
 				</div>			
 			</div>
-			<div class="col-md-6">
-				<div class="col-md-12">
-					<div class="form-group floating-label">
-						{!!Form::textarea('keterangan',null,['class'=>'form-control', 'id'=>'keterangan','rows'=>'2'])!!}
-						{!!Form::label('keterangan','Keterangan Unit Usaha')!!}
-					</div>
-				</div>
-				<div class="col-md-12">
-					<h4 class="text-primary">Data Pemilik Unit Usaha</h4>
-				</div>
-				<div class="col-md-12">
-					<div class="form-group floating-label">
-						{!!Form::text('personal_no_ktp',!isset($data)?null:$data->personal->no_ktp,['class'=>'form-control', 'id'=>'personal_no_ktp'])!!}
-						{!!Form::label('personal_no_ktp','No. Kartu Tanda Penduduk')!!}
-					</div>
-				</div>
-				<div class="col-md-8">
-					<div class="form-group floating-label">
-						{!!Form::text('personal_nama',!isset($data)?null:$data->personal->nama,['class'=>'form-control', 'id'=>'personal_nama'])!!}
-						{!!Form::label('personal_nama','Nama Pemilik Unit Usaha')!!}
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group floating-label">
-						{!!Form::select('personal_jenis_kelamin',['m'=>'Laki-Laki','f'=>'Perempuan'],null,['class'=>'form-control', 'id'=>'personal_jenis_kelamin'])!!}
-						{!!Form::label('personal_jenis_kelamin','Jenis Kelamin')!!}
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group floating-label">
-						{!!Form::text('personal_tempat_lahir',!isset($data)?null:$data->personal->tempat_lahir,['class'=>'form-control', 'id'=>'personal_tempat_lahir'])!!}
-						{!!Form::label('personal_tempat_lahir','Tempat Lahir')!!}
-					</div>
-				</div>
-				<div class="col-xs-3">
-					<div class="form-group floating-label">
-						{!!Form::text('personal_tanggal_lahir',!isset($data)?null:$data->personal->tanggal_lahir,['class'=>'form-control txt-datepicker', 'id'=>'personal_tanggal_lahir'])!!}
-						{!!Form::label('personal_tanggal_lahir','Tempat Lahir')!!}
-					</div>
-				</div>
-				<div class="col-xs-3">
-					<div class="form-group floating-label">
-						{!!Form::select('personal_agama',['islam'=>'Islam','katolik'=>'Katolik','protestant'=>'Protestant','hindu'=>'Hindu','budha'=>'Budha','kong wu chu'=>'Kong Wu Chu'],!isset($data)?null:$data->personal->agama,['class'=>'form-control', 'id'=>'personal_agama'])!!}
-						{!!Form::label('personal_agama','Agama')!!}
-					</div>
-				</div>
-				<div class="col-xs-12">
-					<div class="form-group floating-label">
-						{!!Form::textarea('personal_alamat',!isset($data)?null:$data->personal->alamat,['class'=>'form-control', 'id'=>'personal_alamat','rows'=>'2'])!!}
-						{!!Form::label('personal_alamat','Alamat')!!}
-					</div>
-				</div>
-			</div>	
 		</div>
+		<div class="col-md-6">
+			<div class="col-md-12">
+				<div class="form-group floating-label">
+					{!!Form::textarea('keterangan',null,['class'=>'form-control', 'id'=>'keterangan','rows'=>'2'])!!}
+					{!!Form::label('keterangan','Keterangan Unit Usaha')!!}
+				</div>
+			</div>
+			<div class="col-md-12">
+				<h4 class="text-primary">Data Pemilik Unit Usaha</h4>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group floating-label">
+					{!!Form::text('personal_no_ktp',!isset($data)?null:$data->personal->no_ktp,['class'=>'form-control', 'id'=>'personal_no_ktp'])!!}
+					{!!Form::label('personal_no_ktp','No. Kartu Tanda Penduduk')!!}
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="form-group floating-label">
+					{!!Form::text('personal_nama',!isset($data)?null:$data->personal->nama,['class'=>'form-control', 'id'=>'personal_nama'])!!}
+					{!!Form::label('personal_nama','Nama Pemilik Unit Usaha')!!}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group floating-label">
+					{!!Form::select('personal_jenis_kelamin',['m'=>'Laki-Laki','f'=>'Perempuan'],null,['class'=>'form-control', 'id'=>'personal_jenis_kelamin'])!!}
+					{!!Form::label('personal_jenis_kelamin','Jenis Kelamin')!!}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group floating-label">
+					{!!Form::text('personal_tempat_lahir',!isset($data)?null:$data->personal->tempat_lahir,['class'=>'form-control', 'id'=>'personal_tempat_lahir'])!!}
+					{!!Form::label('personal_tempat_lahir','Tempat Lahir')!!}
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group floating-label">
+					{!!Form::text('personal_tanggal_lahir',!isset($data)?null:$data->personal->tanggal_lahir,['class'=>'form-control txt-datepicker', 'id'=>'personal_tanggal_lahir'])!!}
+					{!!Form::label('personal_tanggal_lahir','Tempat Lahir')!!}
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group floating-label">
+					{!!Form::select('personal_agama',['islam'=>'Islam','katolik'=>'Katolik','protestant'=>'Protestant','hindu'=>'Hindu','budha'=>'Budha','kong wu chu'=>'Kong Wu Chu'],!isset($data)?null:$data->personal->agama,['class'=>'form-control', 'id'=>'personal_agama'])!!}
+					{!!Form::label('personal_agama','Agama')!!}
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="form-group floating-label">
+					{!!Form::textarea('personal_alamat',!isset($data)?null:$data->personal->alamat,['class'=>'form-control', 'id'=>'personal_alamat','rows'=>'2'])!!}
+					{!!Form::label('personal_alamat','Alamat')!!}
+				</div>
+			</div>
+		</div>	
 	</div>
+</div>
 </div>

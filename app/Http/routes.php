@@ -16,8 +16,17 @@ Route::group(['prefix'=>'admin','middleware'=>'UAC:admin','namespace'=>'Admin'],
 			'tempat_pemasaran'=>'TempatPemasaranController',
 			'bahan_baku'=>'BahanBakuController',
 			'permodalan'=>'PermodalanController',
-			'manajement'=>'ManajementController'
+			'manajement'=>'ManajementController',
+			'izin'=>'IzinUsahaController',
+			'media_online'=>'MediaOnlineController',
 		]);
+		Route::group(['prefix'=>'kategori'],function ()
+		{
+			Route::resources([
+				'master_kategori'=>'KategoriProdukController',
+				'sub_kategori'=>'SubKategoriProdukController',
+			]);
+		});
 	});
 });
 Route::group(['namespace'=>'Umum'],function ()

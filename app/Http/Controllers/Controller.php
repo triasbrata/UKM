@@ -36,6 +36,21 @@ abstract class Controller extends BaseController
     {
         return redirect()->route($this->nameFix('index'));
     }
+    
+    private function routeMessage($from)
+    {
+        switch ($from) {
+            case 'store':
+                return "ditambah";
+            break;
+            case 'update':
+                return "diperbarui";
+            break;
+            case 'destroy':
+                return "dihapus";
+            break;
+        }
+    }
     /**
      * route user to index and give some
      * alert of success from previous action
@@ -45,29 +60,16 @@ abstract class Controller extends BaseController
     public function routeAndSuccess($from)
     {
         $message = "{$this->moduleName} successfully ";
-        switch ($from) {
-            case 'destroy':
-                $message.= "destroyed";
-                break;
-            default:
-                $message.=$from.'d';
-            break;
-        }
-           return  $this->toIndex()->withSuccess([$message]);
+        $message.= $this->routeMessage($from);
+        return  $this->toIndex()->withSuccess([$message]);
     }
     public function routeBackWithError($from)
     {
-        $message = "{$this->moduleName} fail ";
-        switch ($from) {
-            case 'destroy':
-                $message.= "destroyed";
-                break;
-            default:
-                $message.=$from.'d';
-            break;
-        }
+        $message = "{$this->moduleName} gagal ";
+        $message.= $this->routeMessage($from);
         return redirect()->back()->withInput()->withErrors([$message]);
     }
+   
     /**
      * 
      * @param  string $index [description]

@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         Laracasts\Generators\GeneratorsServiceProvider::class,
+        Local\Vendor\UploadHelper\UploadHelperServiceProvide::class,
 
         /*
          * Application Service Providers...
@@ -145,7 +146,6 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*
@@ -196,6 +196,7 @@ return [
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Form'      => Illuminate\Html\FormFacade::class,
         'RoleUserChecker' => Akademik\RoleUserChecker::class,
+        'UploadHelper' => Local\Vendor\UploadHelper\UploadHelperFacade::class,
 
     ],
 

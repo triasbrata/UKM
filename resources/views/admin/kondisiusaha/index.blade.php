@@ -1,4 +1,3 @@
-@inject('tipeProgram','\App\TipeProgramTranslate')
 @section('title','Keseluruhan Data Unit Kegiatan Masyarakat')
 @extends('main')
 @section('content')
@@ -11,7 +10,7 @@
 					</header>
 					<div class="tools">
 						<div class="btn-group">
-							<a href="{{ route($create) }}" class="btn btn-icon-toggle btn-refresh"><i class="md md-add"></i></a>
+							<a href="{{ route($create) }}" class="btn btn-primary">Tambah</a>
 						</div>
 					</div>
 				</div>

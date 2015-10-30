@@ -4,6 +4,8 @@
 @inject('bahanBaku','App\BahanBaku')
 @inject('permodalan','App\Permodalan')
 @inject('manajement','App\Manajement')
+@inject('media','App\MediaOnline')
+@inject('izin','App\IzinUsaha')
 <div class="row">
 	<div class="col-md-12">
 		<div class="col-md-12">
@@ -36,13 +38,13 @@
 		</div>
 		<div class="col-md-12">	
 			<div class="form-group floating-label">
-				{!!Form::select('tujuan_pemasaran[]',$tujuanPemasaran->lists('label','id'),null,['class'=>'form-control', 'id'=>'tujuan_pemasaran','multiple'=>'multiple'])!!}
+				{!!Form::select('tujuan_pemasaran_list[]',$tujuanPemasaran->lists('label','id'),null,['class'=>'form-control', 'id'=>'tujuan_pemasaran','multiple'=>'multiple'])!!}
 				{!!Form::label('tujuan_pemasaran','Tujuan Pemasaran')!!}
 			</div>
 		</div>
 		<div class="col-md-12">	
 			<div class="form-group floating-label">
-				{!!Form::select('tempat_pemasaran[]',$tempatPemasaran->lists('label','id'),null,['class'=>'form-control', 'id'=>'tempat_pemasaran','multiple'=>'multiple'])!!}
+				{!!Form::select('tempat_pemasaran_list[]',$tempatPemasaran->lists('label','id'),null,['class'=>'form-control', 'id'=>'tempat_pemasaran','multiple'=>'multiple'])!!}
 				{!!Form::label('tempat_pemasaran','Tempat Pemasaran')!!}
 			</div>
 		</div>
@@ -51,7 +53,7 @@
 		</div>
 		<div class="col-md-12">	
 			<div class="form-group floating-label">
-				{!!Form::select('bahan_baku[]',$bahanBaku->lists('label','id'),null,['class'=>'form-control', 'id'=>'bahan_baku','multiple'=>'multiple'])!!}
+				{!!Form::select('bahan_baku_list[]',$bahanBaku->lists('label','id'),null,['class'=>'form-control', 'id'=>'bahan_baku','multiple'=>'multiple'])!!}
 				{!!Form::label('bahan_baku','Sumber Bahan Baku')!!}
 			</div>
 		</div>
@@ -60,7 +62,7 @@
 		</div>
 		<div class="col-md-12">	
 			<div class="form-group floating-label">
-				{!!Form::select('permodalan[]',$permodalan->lists('label','id'),null,['class'=>'form-control', 'id'=>'permodalan','multiple'=>'multiple'])!!}
+				{!!Form::select('permodalan_list[]',$permodalan->lists('label','id'),null,['class'=>'form-control', 'id'=>'permodalan','multiple'=>'multiple'])!!}
 				{!!Form::label('permodalan','Sumber Utama Modal')!!}
 			</div>
 		</div>
@@ -120,83 +122,27 @@
 			</div>
 		</div>
 		<div class="col-md-12">	
-		<h4 class="text-primary">Perijinan</h4>
+		<h4 class="text-primary">Perizinan</h4>
 		</div>
-		<div class="col-md-4">	
-			<div class="form-group floating-label">
-					{!!Form::text('pirt',null,['class'=>'form-control', 'id'=>'pirt'])!!}
-					{!!Form::label('pirt','Izin PIRT')!!}
+		<?php $x=0 ?>
+		@foreach ($izin->all() as $element)
+			<div class="col-md-6">	
+				<div class="form-group floating-label">
+					{!!Form::text('izin_usaha['.$element->id.']',isset($data)?$data->findValueIzinUsha($element->id):null,['class'=>'form-control', 'id'=>'izin_usaha_'.$x])!!}
+					{!!Form::label('izin_usaha_'.$x,$element->title)!!}
+				</div>
 			</div>
-		</div>
-		<div class="col-md-4">	
-			<div class="form-group floating-label">
-				{!!Form::text('mn',null,['class'=>'form-control', 'id'=>'mn'])!!}
-				{!!Form::label('mn','Izin NM')!!}
-			</div>
-		</div>
-		<div class="col-md-4">	
-			<div class="form-group floating-label">
-				{!!Form::text('halal',null,['class'=>'form-control', 'id'=>'halal'])!!}
-				{!!Form::label('halal','Izin Halal')!!}
-			</div>
-		</div>
-		<div class="col-md-6">	
-			<div class="form-group floating-label">
-				{!!Form::text('iso',null,['class'=>'form-control', 'id'=>'iso'])!!}
-				{!!Form::label('iso','Izin ISO')!!}
-			</div>
-		</div>
-		<div class="col-md-6">	
-			<div class="form-group floating-label">
-				{!!Form::text('lain_lain',null,['class'=>'form-control', 'id'=>'lain_lain'])!!}
-				{!!Form::label('lain_lain','Izin Lain')!!}
-			</div>
-		</div>
+		@endforeach
 		<div class="col-md-12">	
 		<h4 class="text-primary">Media Sosial</h4>
 		</div>
-		<div class="col-md-6">	
-			<div class="form-group floating-label">
-			<div class="input-group">
-				<span class="input-group-addon">facebook.com/</span>
-				<div class="input-group-content">
-					{!!Form::text('facebook',null,['class'=>'form-control', 'id'=>'facebook'])!!}
-					{!!Form::label('facebook','Alamat Akun Facebook')!!}
+		@foreach ($media->all() as $element)
+			<div class="col-md-6">	
+				<div class="form-group floating-label">
+							{!!Form::text('media_online['.$element->id.']',isset($data)? $data->findValueMediaOnline($element->id):null,['class'=>'form-control', 'id'=>'media_online_'.$x])!!}
+							{!!Form::label('media_online_'.$x,$element->title)!!}	
 				</div>
 			</div>
-			</div>
-		</div>
-		<div class="col-md-6">	
-			<div class="form-group floating-label">
-			<div class="input-group">
-				<span class="input-group-addon" style="font-size:24px;">@</span>
-				<div class="input-group-content">
-					{!!Form::text('twitter',null,['class'=>'form-control', 'id'=>'twitter'])!!}
-					{!!Form::label('twitter','Alamat Akun Twitter')!!}
-				</div>
-			</div>
-			</div>
-		</div><div class="col-md-6">	
-			<div class="form-group floating-label">
-			<div class="input-group">
-				<span class="input-group-addon" style="font-size:24px;">@</span>
-				<div class="input-group-content">
-					{!!Form::text('line',null,['class'=>'form-control', 'id'=>'line'])!!}
-					{!!Form::label('line','Alamat Akun Line')!!}
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="col-md-6">	
-			<div class="form-group floating-label">
-			<div class="input-group">
-				<span class="input-group-addon" style="font-size:24px;">@</span>
-				<div class="input-group-content">
-					{!!Form::text('instagram',null,['class'=>'form-control', 'id'=>'instagram'])!!}
-					{!!Form::label('instagram','Alamat Akun instagram')!!}
-				</div>
-			</div>
-			</div>
-		</div>
+		@endforeach
 	</div>
 </div>
